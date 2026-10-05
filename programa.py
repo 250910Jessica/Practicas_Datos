@@ -6,27 +6,27 @@ def obtener_nota_minima_aprobatoria():
     print("la nota minima necesaria pra aprobar el curso 6.0")
 obtener_nota_minima_aprobatoria()
 
-def evaluar_rendimiento(nota):
-    if nota <= 7.0:                    
-        nota = "Reprobado"            
-    elif nota <= 9.4:                 
-        nota = "Aprobado"             
-    else:                             
-        nota = "Excelente"            
-    return nota                       
-calificacion = evaluar_rendimiento(10.0)
-print(f"El resultado del curso es: {calificacion}")
-      
 def calcular_promedio_ponderado(evaluacion, libreta):
-    calf = evaluacion + libreta
-    if calf == 100:
-        calf= "Excelente"
-    elif calf>= 70:
-        calf = "Aprobado"
+    promedio = (evaluacion * 0.70) + (libreta * 0.30)
+    return round(promedio, 1)
+      
+def generar_boleta(nombre_alumno, evaluacion, libreta):
+    calificacion_final = calcular_promedio_ponderado(evaluacion, libreta)
+
+    print(f"Alumno: {nombre_alumno}")
+    print(f"Calificación final: {calificacion_final}")
+
+    if calificacion_final == 10.0:
+        print("Estado: Excelente")
+        print("¿Necesita examen extraordinario?: No")
+    elif calificacion_final == 7.0:
+        print("Estado: Aprobado")
+        print("¿Necesita examen extraordinario?: No")
     else:
-       calf = "Reprobado"
-    return calf
-calificacion_final= calcular_promedio_ponderado(70, 30)
-print(f"El resultado final del curso es: {calificacion_final}")
+        print("Estado: Reprobado")
+        print("¿Necesita examen extraordinario?: Sí")
+
+
+generar_boleta("Jessica", 70, 30)
 
   
